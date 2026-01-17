@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "author": "Marius Marginean",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": -124.8, "left": -23.96, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -152.1,
+      "left": -282.5,
+      "attrs": { "distance": "400" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic2",
+      "top": -8.1,
+      "left": -282.5,
+      "attrs": { "distance": "236" }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": 157.6,
+      "left": -276.18,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -132,
+      "left": 88.2,
+      "attrs": { "volume": "0.1" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -299.6, "left": 57.6, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 102.2,
+      "left": 144,
+      "attrs": { "color": "blue", "xray": "1", "bounce": "1" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": 160,
+      "left": -32.8,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -265.6,
+      "left": -268,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "lcd1:VCC", "esp:5V", "red", [ "h-19.2", "v-124.7" ] ],
+    [ "lcd1:SDA", "esp:21", "green", [ "h-9.6", "v-57.4", "h124.8", "v-201.6" ] ],
+    [ "lcd1:SCL", "esp:22", "green", [ "h-9.6", "v-66.9", "h124.8", "v-211.2", "h0", "v-19.2" ] ],
+    [ "pir1:VCC", "esp:5V", "red", [ "v9.6", "h192", "v-182.4" ] ],
+    [ "pir1:OUT", "esp:27", "green", [ "v9.6", "h182.26", "v-105.6", "h0", "v-153.6" ] ],
+    [ "btn1:2.l", "esp:14", "green", [ "v19.4", "h-38.4", "v-0.4", "h-153.6", "v-143.6" ] ],
+    [ "ultrasonic2:VCC", "esp:5V", "red", [ "v9.6", "h163.2", "v-19.2" ] ],
+    [ "ultrasonic2:GND", "esp:GND.1", "black", [ "v9.6", "h133.2", "v-67.2" ] ],
+    [ "btn1:1.l", "esp:GND.1", "green", [ "h-19.2", "v38.4", "h-172.8", "v-124.8" ] ],
+    [ "pir1:GND", "esp:GND.1", "black", [ "v9.6", "h172.54", "v-230.4" ] ],
+    [ "lcd1:GND", "esp:GND.1", "black", [ "h-19.2", "v-163.2" ] ],
+    [ "ultrasonic2:TRIG", "esp:18", "green", [ "v9.6", "h153.2", "v57.6", "h134.4", "v-172.8" ] ],
+    [ "ultrasonic2:ECHO", "esp:19", "green", [ "v9.6", "h143.2", "v57.6", "h134.4", "v-182.4" ] ],
+    [ "ultrasonic1:VCC", "esp:5V", "red", [ "v28.8", "h163.2", "v105.6" ] ],
+    [ "ultrasonic1:GND", "esp:GND.1", "black", [ "v28.8", "h133.2", "v57.6" ] ],
+    [ "ultrasonic1:TRIG", "esp:5", "green", [ "v28.8", "h153.2", "v182.4", "h134.4", "v-163.2" ] ],
+    [
+      "ultrasonic1:ECHO",
+      "esp:17",
+      "green",
+      [ "v28.8", "h143.2", "v182.4", "h134.4", "v-153.6" ]
+    ],
+    [ "ldr1:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "ldr1:GND", "esp:GND.1", "black", [ "h48", "v268.4" ] ],
+    [ "ldr1:AO", "esp:34", "green", [ "h48", "v162.5" ] ],
+    [ "servo1:V+", "esp:5V", "green", [ "h-105.6", "v316.9" ] ],
+    [ "servo1:GND", "esp:GND.1", "black", [ "h-105.6", "v278.4" ] ],
+    [ "servo1:PWM", "esp:13", "green", [ "h-105.6", "v269" ] ],
+    [ "bz1:2", "esp:25", "green", [ "v192", "h-173.2", "v-163.2" ] ],
+    [ "bz1:1", "esp:GND.1", "green", [ "v192", "h-163.2", "v-115.2" ] ]
+  ],
+  "dependencies": {}
+}
